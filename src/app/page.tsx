@@ -207,11 +207,11 @@ export default function Home() {
         <div className="grid grid-cols-3 gap-1">
           {socials.map((s) => (
             <a
-              key={s}
-              href="#"
+              key={s.name}
+              href={s.href}
               className="flex min-h-12 items-center text-[15px] text-muted hover:text-foreground"
             >
-              {s}
+              {s.name}
             </a>
           ))}
         </div>
