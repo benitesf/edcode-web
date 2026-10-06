@@ -13,13 +13,13 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Edson Benites — Software Developer",
+  title: "Edson Benites (EdCode) — Construyendo en público",
   description:
-    "Portfolio de Edson Benites. Construyo productos digitales con foco en rendimiento y experiencia de usuario.",
+    "Fundador de Humans Not Required. Software a medida, automatización e IA. Construyo en público.",
   openGraph: {
-    title: "Edson Benites — Software Developer",
+    title: "Edson Benites (EdCode) — Construyendo en público",
     description:
-      "Portfolio de Edson Benites. Construyo productos digitales con foco en rendimiento y experiencia de usuario.",
+      "Fundador de Humans Not Required. Software a medida, automatización e IA. Construyo en público.",
     url: "https://edcode.vercel.app",
     siteName: "EDCODE",
     locale: "es_PE",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Edson Benites — Software Developer",
+    title: "Edson Benites (EdCode) — Construyendo en público",
     description:
-      "Portfolio de Edson Benites. Construyo productos digitales con foco en rendimiento y experiencia de usuario.",
+      "Fundador de Humans Not Required. Software a medida, automatización e IA. Construyo en público.",
   },
   metadataBase: new URL("https://edcode.vercel.app"),
 }
@@ -44,7 +44,7 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="bg-[var(--bg)] text-[var(--text)] min-h-screen">{children}</body>
+      <body className="min-h-screen bg-background text-foreground">{children}</body>
     </html>
   )
 }
