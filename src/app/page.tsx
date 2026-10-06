@@ -1,8 +1,10 @@
 import Image from "next/image"
 import {
+  about,
   business,
   channels,
   cta,
+  headerSocials,
   hnr,
   live,
   profile,
@@ -43,6 +45,17 @@ export default function Home() {
           {profile.tagline} Fundador de{" "}
           <span className="text-foreground">{profile.company}</span>.
         </p>
+        <div className="flex flex-wrap gap-2">
+          {headerSocials.map((s) => (
+            <a
+              key={s.name}
+              href={s.href}
+              className="flex min-h-11 items-center rounded-full border border-line-strong px-4 text-sm font-medium text-muted hover:border-line-hover hover:text-foreground"
+            >
+              {s.name}
+            </a>
+          ))}
+        </div>
       </header>
 
       <nav
@@ -70,6 +83,24 @@ export default function Home() {
           ))}
         </div>
       </nav>
+
+      <section aria-labelledby="sobre-mi" className="flex flex-col gap-3.5">
+        <h2 id="sobre-mi" className={`${eyebrow} text-muted`}>
+          {about.title}
+        </h2>
+        <p className="text-base leading-normal text-muted text-pretty">
+          {about.text}
+        </p>
+        <p className="text-base leading-normal text-pretty">
+          {about.cta}{" "}
+          <a
+            href={about.emailHref}
+            className="font-medium text-accent underline underline-offset-4"
+          >
+            {about.email}
+          </a>
+        </p>
+      </section>
 
       <section
         aria-labelledby="hnr"

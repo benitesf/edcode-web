@@ -19,6 +19,14 @@ export const profile = {
   company: "Humans Not Required",
 }
 
+export const about = {
+  title: "Sobre mí",
+  text: "Más de 7 años en el mundo de Data, Software e IA. Participé en startups, centros de investigación y en el sector financiero y de seguros. Ahora construyo en público y lidero mi emprendimiento HNR.",
+  cta: "¿Trabajamos juntos? Escríbeme a",
+  email: "benites.ee@gmail.com",
+  emailHref: links.email,
+}
+
 export const live = {
   label: "Construyendo en público",
   href: "#publico",
@@ -88,3 +96,5 @@ export const socials = [
   { name: "GitHub", href: links.github },
   { name: "LinkedIn", href: links.linkedin },
 ]
+
+export const headerSocials = socials.slice(0, 4)
