@@ -1,3 +1,5 @@
+import type { IconName } from "@/components/Icon"
+
 // TODO: reemplazar los "#" por los links reales (comunidad, redes, contacto).
 const PENDING = "#"
 
@@ -33,7 +35,7 @@ export const live = {
 }
 
 export const cta = {
-  community: { label: "Únete a la comunidad", via: "WhatsApp", href: PENDING },
+  community: { label: "Únete a la comunidad", href: PENDING },
   discord: { label: "Discord", href: PENDING },
   contact: { label: "Contacto", href: links.whatsapp },
 }
@@ -75,11 +77,16 @@ export const projects: Project[] = [
   },
 ]
 
-export const channels = [
-  { name: "YouTube", what: "Lives completos", href: links.youtube },
-  { name: "TikTok", what: "Clips y lives", href: links.tiktok },
-  { name: "Instagram", what: "Detrás de cámaras", href: links.instagram },
-  { name: "X", what: "Avances diarios", href: links.x },
+export const channels: {
+  name: string
+  what: string
+  icon: IconName
+  href: string
+}[] = [
+  { name: "YouTube", what: "Lives completos", icon: "youtube", href: links.youtube },
+  { name: "TikTok", what: "Clips y lives", icon: "tiktok", href: links.tiktok },
+  { name: "Instagram", what: "Detrás de cámaras", icon: "instagram", href: links.instagram },
+  { name: "X", what: "Avances diarios", icon: "x", href: links.x },
 ]
 
 export const business = {
@@ -88,13 +95,13 @@ export const business = {
   cta: { label: "Escríbeme", href: links.email },
 }
 
-export const socials = [
-  { name: "YouTube", href: links.youtube },
-  { name: "TikTok", href: links.tiktok },
-  { name: "Instagram", href: links.instagram },
-  { name: "X", href: links.x },
-  { name: "GitHub", href: links.github },
-  { name: "LinkedIn", href: links.linkedin },
+export const socials: { name: string; icon: IconName; href: string }[] = [
+  { name: "YouTube", icon: "youtube", href: links.youtube },
+  { name: "TikTok", icon: "tiktok", href: links.tiktok },
+  { name: "Instagram", icon: "instagram", href: links.instagram },
+  { name: "X", icon: "x", href: links.x },
+  { name: "GitHub", icon: "github", href: links.github },
+  { name: "LinkedIn", icon: "linkedin", href: links.linkedin },
 ]
 
 export const headerSocials = socials.slice(0, 4)

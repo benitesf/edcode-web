@@ -1,4 +1,5 @@
 import Image from "next/image"
+import { Icon } from "@/components/Icon"
 import {
   about,
   business,
@@ -12,11 +13,17 @@ import {
   socials,
 } from "@/data/profile"
 
-const eyebrow = "font-mono text-[13px] font-medium uppercase tracking-[0.08em]"
+const eyebrow = "font-mono text-xs font-medium uppercase tracking-[0.08em]"
+const h2 =
+  "font-display text-[44px] font-extrabold uppercase leading-[0.9] text-balance"
+const tag =
+  "inline-flex flex-none items-center rounded-[4px] border px-2 py-[3px] font-mono text-[10px] font-medium uppercase tracking-[0.08em] whitespace-nowrap"
+const button =
+  "flex min-h-12 items-center justify-center gap-2.5 rounded-md border-[1.5px] px-6 text-base font-semibold"
 
 export default function Home() {
   return (
-    <main className="mx-auto flex max-w-[480px] flex-col gap-12 px-5 pb-8 pt-6">
+    <main className="mx-auto flex max-w-[480px] flex-col gap-14 px-5 pb-8 pt-6">
       <header className="flex flex-col gap-[18px]">
         <div className="flex items-center justify-between gap-3">
           <Image
@@ -25,20 +32,20 @@ export default function Home() {
             width={64}
             height={64}
             priority
-            className="size-16 flex-none rounded-full border border-line-strong object-cover"
+            className="size-16 flex-none rounded-lg border border-line-strong object-cover"
           />
           <a
             href={live.href}
-            className="flex min-h-11 items-center gap-2.5 rounded-full border border-line-hover px-4 text-sm font-semibold"
+            className={`${tag} min-h-11 gap-2.5 border-accent-line bg-accent-bg px-3.5 text-accent`}
           >
             <span
               aria-hidden
-              className="pulse-dot size-2 flex-none rounded-full bg-accent"
+              className="pulse-dot size-1.5 flex-none rounded-full bg-accent"
             />
             {live.label}
           </a>
         </div>
-        <h1 className="text-[46px] font-semibold leading-none tracking-[-0.04em]">
+        <h1 className="font-display text-[76px] font-extrabold uppercase leading-[0.86] tracking-[-0.01em] text-balance">
           {profile.name}
         </h1>
         <p className="text-[19px] leading-[1.4] text-muted text-pretty">
@@ -50,8 +57,9 @@ export default function Home() {
             <a
               key={s.name}
               href={s.href}
-              className="flex min-h-11 items-center rounded-full border border-line-strong px-4 text-sm font-medium text-muted hover:border-line-hover hover:text-foreground"
+              className="flex min-h-11 items-center gap-2 rounded-md border border-line px-3.5 text-sm font-medium text-muted hover:border-line-strong hover:text-foreground"
             >
+              <Icon name={s.icon} size={16} />
               {s.name}
             </a>
           ))}
@@ -60,32 +68,38 @@ export default function Home() {
 
       <nav
         aria-label="Acciones principales"
-        className="-mt-4 flex flex-col gap-2.5"
+        className="-mt-6 flex flex-col gap-2.5"
       >
         <a
           href={cta.community.href}
-          className="flex min-h-[58px] items-center justify-between gap-3 rounded-2xl bg-accent px-5 text-lg font-semibold tracking-[-0.01em] text-ink hover:brightness-105"
+          className={`${button} justify-between border-accent bg-accent text-ink hover:border-accent-deep hover:bg-accent-deep hover:text-white`}
         >
-          <span>{cta.community.label}</span>
-          <span className="font-mono text-[13px] font-medium">
-            {cta.community.via} ↗
+          <span className="flex items-center gap-2.5">
+            <Icon name="users" />
+            {cta.community.label}
           </span>
+          <Icon name="arrow" />
         </a>
         <div className="grid grid-cols-2 gap-2.5">
-          {[cta.discord, cta.contact].map((c) => (
-            <a
-              key={c.label}
-              href={c.href}
-              className="flex min-h-[52px] items-center justify-center rounded-2xl border border-line-strong bg-surface-2 text-base font-medium hover:bg-[#1d1d20]"
-            >
-              {c.label}
-            </a>
-          ))}
+          <a
+            href={cta.discord.href}
+            className={`${button} border-line-strong hover:bg-surface-hover`}
+          >
+            {cta.discord.label}
+            <Icon name="external" size={16} />
+          </a>
+          <a
+            href={cta.contact.href}
+            className={`${button} border-line-strong hover:bg-surface-hover`}
+          >
+            <Icon name="whatsapp" size={16} />
+            {cta.contact.label}
+          </a>
         </div>
       </nav>
 
       <section aria-labelledby="sobre-mi" className="flex flex-col gap-3.5">
-        <h2 id="sobre-mi" className={`${eyebrow} text-muted`}>
+        <h2 id="sobre-mi" className={`${eyebrow} text-dim`}>
           {about.title}
         </h2>
         <p className="text-base leading-normal text-muted text-pretty">
@@ -104,11 +118,11 @@ export default function Home() {
 
       <section
         aria-labelledby="hnr"
-        className="flex flex-col gap-4 rounded-[22px] border border-line-strong bg-card p-6"
+        className="flex flex-col gap-4 rounded-lg border border-line-strong bg-surface p-6"
       >
         <div className="flex items-center justify-between">
           <span className={`${eyebrow} text-accent`}>{hnr.eyebrow}</span>
-          <span className="rounded-lg bg-accent px-[9px] py-1.5 font-mono text-[13px] font-semibold text-ink">
+          <span className={`${tag} border-accent-line bg-accent-bg text-accent`}>
             HNR
           </span>
         </div>
@@ -118,12 +132,9 @@ export default function Home() {
             alt=""
             width={56}
             height={56}
-            className="size-14 flex-none rounded-xl bg-foreground p-1.5"
+            className="size-14 flex-none rounded-md bg-paper p-1.5"
           />
-          <h2
-            id="hnr"
-            className="text-[32px] font-semibold leading-[1.05] tracking-[-0.035em]"
-          >
+          <h2 id="hnr" className={h2}>
             {hnr.name}
           </h2>
         </div>
@@ -132,46 +143,47 @@ export default function Home() {
         </p>
         <a
           href={hnr.cta.href}
-          className="mt-1 flex min-h-[50px] items-center justify-center gap-2 rounded-[14px] border border-line-hover text-base font-medium hover:bg-[#1d1d20]"
+          className={`${button} mt-1 border-line-strong hover:bg-surface-hover`}
         >
-          {hnr.cta.label} ↗
+          {hnr.cta.label}
+          <Icon name="arrow" />
         </a>
       </section>
 
-      <section aria-labelledby="proyectos" className="flex flex-col gap-3.5">
+      <section aria-labelledby="proyectos" className="flex flex-col gap-4">
         <div className="flex items-baseline justify-between">
-          <h2 id="proyectos" className={`${eyebrow} text-muted`}>
+          <h2 id="proyectos" className={h2}>
             Proyectos
           </h2>
-          <span className="font-mono text-[13px] text-dim">
+          <span className="font-mono text-xs text-dim">
             {String(projects.length).padStart(2, "0")}
           </span>
         </div>
-        <div className="flex flex-col gap-2.5">
+        <div className="flex flex-col border-t border-line">
           {projects.map((p) => (
             <a
               key={p.name}
               href={p.href}
-              className="flex flex-col gap-1.5 rounded-[18px] border border-line bg-surface p-[18px] hover:border-line-hover"
+              className="flex flex-col gap-2 border-b border-line py-5 hover:bg-surface"
             >
               <div className="flex items-center justify-between gap-3">
-                <span className="flex items-center gap-3 text-lg font-semibold tracking-[-0.015em]">
+                <span className="flex items-center gap-3 text-lg font-semibold tracking-[-0.01em]">
                   {p.logo && (
                     <Image
                       src={p.logo}
                       alt=""
                       width={724}
                       height={512}
-                      className="h-11 w-auto flex-none rounded-lg bg-foreground p-1 object-contain"
+                      className="h-11 w-auto flex-none rounded-md bg-paper p-1 object-contain"
                     />
                   )}
                   {p.name}
                 </span>
                 <span
-                  className={`flex-none rounded-full border px-[9px] py-[5px] font-mono text-xs font-medium ${
+                  className={`${tag} ${
                     p.highlight
-                      ? "border-accent bg-accent text-ink"
-                      : "border-line-hover text-[#c9c9cc]"
+                      ? "border-accent-line bg-accent-bg text-accent"
+                      : "border-line-strong text-muted"
                   }`}
                 >
                   {p.status}
@@ -190,7 +202,7 @@ export default function Home() {
         aria-labelledby="publico-title"
         className="flex scroll-mt-6 flex-col gap-3.5"
       >
-        <h2 id="publico-title" className={`${eyebrow} text-muted`}>
+        <h2 id="publico-title" className={h2}>
           Construyendo en público
         </h2>
         <p className="text-[15px] text-muted">
@@ -203,11 +215,16 @@ export default function Home() {
               href={c.href}
               className="flex min-h-[60px] items-center justify-between gap-3 border-b border-line px-0.5 hover:bg-surface"
             >
-              <span className="flex flex-col gap-0.5">
-                <span className="text-[17px] font-medium">{c.name}</span>
-                <span className="text-sm text-dim">{c.what}</span>
+              <span className="flex items-center gap-3">
+                <Icon name={c.icon} size={22} />
+                <span className="flex flex-col gap-0.5">
+                  <span className="text-[17px] font-medium">{c.name}</span>
+                  <span className="text-sm text-dim">{c.what}</span>
+                </span>
               </span>
-              <span className="font-mono text-[13px] text-muted">↗</span>
+              <span className="text-muted">
+                <Icon name="external" size={16} />
+              </span>
             </a>
           ))}
         </div>
@@ -215,21 +232,22 @@ export default function Home() {
 
       <section
         aria-labelledby="empresas"
-        className="flex flex-col gap-3.5 rounded-[22px] bg-foreground p-6 text-ink"
+        className="flex flex-col gap-3.5 rounded-lg bg-paper p-6 text-ink"
       >
-        <h2 id="empresas" className={`${eyebrow} text-[#4a4a4f]`}>
+        <h2 id="empresas" className={`${eyebrow} text-paper-muted`}>
           Trabajemos juntos
         </h2>
-        <p className="text-[26px] font-semibold leading-[1.15] tracking-[-0.03em] text-pretty">
+        <p className="font-display text-[40px] font-extrabold uppercase leading-[0.92] text-balance">
           {business.title}
         </p>
-        <p className="text-base leading-normal text-[#3d3d42]">
+        <p className="text-base leading-normal text-paper-muted">
           {business.description}
         </p>
         <a
           href={business.cta.href}
-          className="mt-1.5 flex min-h-[52px] items-center justify-center rounded-[14px] bg-ink text-base font-semibold text-foreground hover:bg-[#222225]"
+          className={`${button} mt-1.5 border-ink bg-ink text-paper hover:border-accent-deep hover:bg-accent-deep`}
         >
+          <Icon name="mail" />
           {business.cta.label}
         </a>
       </section>
@@ -240,8 +258,9 @@ export default function Home() {
             <a
               key={s.name}
               href={s.href}
-              className="flex min-h-12 items-center text-[15px] text-muted hover:text-foreground"
+              className="flex min-h-12 items-center gap-2 text-[15px] text-muted hover:text-foreground"
             >
+              <Icon name={s.icon} size={16} />
               {s.name}
             </a>
           ))}

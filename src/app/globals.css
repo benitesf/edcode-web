@@ -1,47 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0b0b0c;
-  --surface: #121214;
-  --surface-2: #161618;
-  --card: #141416;
-  --border: #232327;
-  --border-strong: #2a2a2e;
-  --border-hover: #3a3a40;
-  --text: #f3f2ef;
-  --text-muted: #a6a6ab;
-  --text-dim: #8b8b90;
-  --accent: #c5f23a;
-  --ink: #0b0b0c;
+  --bg: #101318;
+  --surface: rgba(241, 242, 238, 0.04);
+  --surface-hover: rgba(241, 242, 238, 0.08);
+  --border: rgba(241, 242, 238, 0.16);
+  --border-strong: rgba(241, 242, 238, 0.28);
+  --text: #f1f2ee;
+  --text-muted: #c2c7c0;
+  --text-dim: #a7aea7;
+  --accent: #34d399;
+  --accent-deep: #064e3b;
+  --accent-bg: #13261f;
+  --accent-line: #245140;
+  --ink: #101318;
+  --paper: #f1f2ee;
+  --paper-muted: #353b44;
+  --grid: rgba(241, 242, 238, 0.045);
 }
 
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
   --color-surface: var(--surface);
-  --color-surface-2: var(--surface-2);
-  --color-card: var(--card);
+  --color-surface-hover: var(--surface-hover);
   --color-line: var(--border);
   --color-line-strong: var(--border-strong);
-  --color-line-hover: var(--border-hover);
   --color-muted: var(--text-muted);
   --color-dim: var(--text-dim);
   --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --color-accent-bg: var(--accent-bg);
+  --color-accent-line: var(--accent-line);
   --color-ink: var(--ink);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-paper: var(--paper);
+  --color-paper-muted: var(--paper-muted);
+  --font-display: var(--font-display), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-sans-body), system-ui, sans-serif;
+  --font-mono: var(--font-mono-body), ui-monospace, monospace;
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
   color: var(--text);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: var(--font-sans-body), system-ui, sans-serif;
 }
 
 a:focus-visible {
-  outline: 2px solid var(--text);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 @keyframes pulse-dot {
