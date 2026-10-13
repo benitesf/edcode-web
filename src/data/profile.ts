@@ -5,6 +5,7 @@ const PENDING = "#"
 
 const links = {
   whatsapp: "https://wa.me/51957060520",
+  discord: "https://discord.gg/Ffw8QXsUf",
   email: "mailto:benites.ee@gmail.com",
   youtube: "https://www.youtube.com/@humansnotrequired-dev",
   tiktok: "https://www.tiktok.com/@edcode.ai",
@@ -36,7 +37,7 @@ export const live = {
 
 export const cta = {
   community: { label: "Únete a la comunidad", href: PENDING },
-  discord: { label: "Discord", href: PENDING },
+  discord: { label: "Discord", href: links.discord },
   contact: { label: "Contacto", href: links.whatsapp },
 }
 
